@@ -1,2 +1,2 @@
 # JavaScript-Scripts
-Some small sctipts I use while learning JavaScript 
+Some little scripts I use to learn JavaScript
