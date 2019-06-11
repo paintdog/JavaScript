@@ -1,3 +1,3 @@
 # JavaScript-Scripts
 
-I use (this tutorial)[https://javascript.info] to learn JavaScript.
+I use [this tutorial](https://javascript.info) to learn JavaScript.
