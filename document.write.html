@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>document.write()</title>
+  </head>
+  <body>
+      <p id="summary">Nutzung von <tt>document.write()</tt>, allerdings ist die Nutzung nicht unkompliziert (<a href="https://wiki.selfhtml.org/wiki/JavaScript/DOM/Document/write">Information bei selfhtml</a>).</p>
+      
+      <script>
+        document.write("<p>Das ist ein Test.</p>");
+      </script>
+      
+      <p><span id="test" style="border: 1px solid Gold; background: Yellow; padding: 5px;">Klicken Sie hier, um den Seiteninhalt zu ersetzen...</span></p>
+      
+      
+      <script>
+      
+          let button = document.getElementById("test")
+          
+          button.addEventListener("click", test);
+          
+          function test() {
+              document.write("<p>Sie haben den <b>Button</b> gedrückt. Ich habe den Seiteninhalt jetzt überschrieben.</p>")
+          }
+      
+      </script>
+      
+  </body>
+</html>
