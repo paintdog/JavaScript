@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>createElement</title>
+  </head>
+  <body>
+      <p id="summary">Mit dem Befehl <tt>document.createElement(...)</tt> kann ich ein HTML-Element in einer Seite erzeugen.</p>
+            
+      <ul id="list">
+      <li>Listenelement 1</li>
+      <li>Listenelement 2</li>
+      </ul>
+      
+      
+      <script>
+    let list = document.getElementById("list");
+    list.setAttribute("style","display:none");
+
+    let button = document.createElement("button");
+    button.innerHTML = "Liste zeigen";
+    document.querySelector("body").appendChild(button);
+    
+    button.onclick = function () {
+        list.setAttribute("style","display:block");
+        button = document.querySelector("butto");
+        button.setAttribute("style","display:none");
+    }
+      </script>
+  </body>
+</html>

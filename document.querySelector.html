@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>document.querySelector()</title>
+  </head>
+  <body>
+      <p id="summary">Ich kann <tt>document.querySelector()</tt> nutzen, um ein HTML-Tag-Element auszuwählen und zu manipulieren. Der Selektor wirkst sich nur auf das jeweils erste Element des Elementtyps aus.</p>
+      
+      <h1>1. Überschrift</h1>
+      
+      <h1>2. Überschrift</h1>
+      
+      <h1>3. Überschrift</h1>
+      
+      <script>
+        document.querySelector("h1").setAttribute("style", "color:firebrick");
+      </script>
+  </body>
+</html>

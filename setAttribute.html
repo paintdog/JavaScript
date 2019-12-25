@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setAttribute()</title>
+  </head>
+  <body>
+      <p id="summary">Mittels <tt>setAttribute()</tt> kann ich die <tt>style</tt>-Eigenschaften eines Wertes verändern.</p>
+      
+      <p><span id="hide" style="background: Yellow;">Liste verbergen</span> und <span id="show" style="background: Yellow;">Liste anzeigen</span></p>
+      
+      <ul id="list">
+        <li>Listenelement 1</li>
+        <li>Listenelement 2</li>
+      </ul>
+      
+      <p>Bei <tt>display: none</tt> wird ein Element auf der Seite nicht nur versteckt (und nimmt dann noch Raum ein), sondern verschwindet tatsächlich von der Seite, nicht aber aus dem Quelltext der Seite.</p>
+      
+      <script>
+document.getElementById("hide").onclick = function () {
+    let list = document.getElementById("list");
+    list.setAttribute("style","display:none");
+    console.log("Verstecken.");
+	}
+
+document.getElementById("show").onclick = function () {
+    let list = document.getElementById("list");
+    list.setAttribute("style","display:block");
+	console.log("Anzeigen.");
+    }
+      </script>
+  </body>
+</html>
