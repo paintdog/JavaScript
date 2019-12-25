@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>confirm</title>
+  </head>
+  <body>
+  <p id="summary">Beispiel für die Nutzung der confirm-Dialogbox.</p>
+  <p style="display: block; width: 6em; border: 4px solid Orange; background: Yellow; padding: 4px; text-align: center;" id="confirm">Bestätigen</p>
+  
+  <script>                                 
+	let txt; // Javascript Variable
+	document.getElementById("confirm").onclick = function () {
+		let result = confirm ('Bitte bestätigen oder canceln');
+		if (result === true) {
+			txt = "Wurde bestätigt";
+		} else {
+			txt = "Wurde abgelehnt";
+		}
+		console.log(txt);
+	}
+  </script>
+
+  </body>
+</html>

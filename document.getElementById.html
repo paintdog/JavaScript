@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>document.getElementById.html</title>
+  </head>
+  <body>
+      <p id="summary">Zugriff auf ein HTML-Element über die ID.</p>
+      
+      <p id="result"></p>
+      
+      <p>Mit <tt>document.getElementById("")</tt> kann ich ein HTML-Element über die ID auswählen und mittels <tt>innerHTML</tt> kann ich den Inhalt eines HTML-Tags erhalten oder aber setzen.</p>
+      
+      <script>
+        let summary = document.getElementById("summary").innerHTML;
+        
+        document.getElementById("result").innerHTML = summary;
+        
+      </script>
+  </body>
+</html>
