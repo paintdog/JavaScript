@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>window.addEventListener</title>
+  </head>
+  <body>
+      <p id="summary">Hier wird die Verwendung eines <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener">EventTarget.addEventListener()</a> vorgestellt. Ein <tt>addEventListener()</tt> kann mit einem Element auf der einen und einer Funktion oder einem Objekt auf der anderen Seite verbunden werden, wobei letztere den EventListener implementieren müssen.</p>
+      
+      <p id="paint">Grün</p>
+      
+      <button>Mach mal Rot!</button>
+      
+      <p>Nachteil hier bei dieser Umsetzung ist, dass ein Klick irgendwo auf der Seite die Funktion auslöst und nicht allein beim Button, was man aber wohl anpassen kann. Eine Lösung findet sich hier: <a href="button.addEventListener.html">button.addEventListener.html</a>.</p>
+      
+      <p>Mir erscheint die Option interessant, weil ich bei Nutzung des <tt>addEventListeners</tt> eine JavaScript-Datei einbinden kann und sonst theoretisch nichts in der HTML-Seite ändern muss, also nicht:</p>
+      
+      <pre>
+        &lt;button onclick="myFunction()"&gt;Click me&lt;/button&gt;
+      </pre>
+      
+      <script>
+          window.addEventListener("click", paintItRed);
+          
+          function paintItRed() {
+              let paint = document.getElementById("paint");
+              paint.innerHTML = "Jetzt in Rot!";
+              paint.setAttribute("style", "color: red");
+          }
+      </script>
+  </body>
+</html>

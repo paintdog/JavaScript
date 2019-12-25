@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>button.addEventListener</title>
+  </head>
+  <body>
+      <p id="summary">Hier wird die Verwendung eines <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener">EventTarget.addEventListener()</a> mit einem Button vorgestellt.</p>
+      
+      <p id="paint">Grün</p>
+      
+      <button>Mach mal Rot!</button>
+      
+      <script>
+          button = document.querySelector("button");
+          
+          button.addEventListener("click", paintItRed);
+          
+          function paintItRed() {
+              let paint = document.getElementById("paint");
+              paint.innerHTML = "Jetzt in Rot!";
+              paint.setAttribute("style", "color: red");
+          }
+      </script>
+  </body>
+</html>
