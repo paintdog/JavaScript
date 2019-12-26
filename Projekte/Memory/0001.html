@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Titel</title>
+  </head>
+  <body>
+      <p id="summary">Ein einfacher Bildertausch als technischer Demonstrator für ein <b>Memory-Spiel</b>.</p>
+    
+      <table>
+      <tr>
+          <td><img id="1" src="0.png" /></td>
+          <td><img id="2" src="0.png" /></td>
+          <td><img id="3" src="0.png" /></td>
+          <td><img id="4" src="0.png" /></td>
+      </tr>
+      <tr>
+          <td><img id="5" src="0.png" /></td>
+          <td><img id="6" src="0.png" /></td>
+          <td><img id="7" src="0.png" /></td>
+          <td><img id="8" src="0.png" /></td>
+      </tr>
+      </table>
+      
+      
+      <script>
+          
+          let counter = 0;
+          
+          picture_1 = document.getElementById("1");
+          picture_2 = document.getElementById("2");
+          picture_3 = document.getElementById("3");
+          picture_4 = document.getElementById("4");
+          picture_5 = document.getElementById("5");
+          picture_6 = document.getElementById("6");
+          picture_7 = document.getElementById("7");
+          picture_8 = document.getElementById("8");
+          
+          picture_1.addEventListener("click", change_picture_1);
+          picture_2.addEventListener("click", change_picture_2);
+          picture_3.addEventListener("click", change_picture_3);
+          picture_4.addEventListener("click", change_picture_4);
+          picture_5.addEventListener("click", change_picture_5);
+          picture_6.addEventListener("click", change_picture_6);
+          picture_7.addEventListener("click", change_picture_7);
+          picture_8.addEventListener("click", change_picture_8);
+          
+          function change_picture_1() {
+              if (picture_1.getAttribute('src') == '1.png') {
+                  return 0;
+              }
+              if (counter == 2) {
+                  alles_zudecken();
+                  counter = 0;
+              }    
+              if (picture_1.getAttribute('src') == "0.png") {
+                  picture_1.src = "1.png";
+                  counter += 1;
+                  console.log("Counter: " + counter);
+              } else {
+                  picture_1.src = "0.png"; 
+              }
+          }
+          
+          function change_picture_2() {
+              if (picture_2.getAttribute('src') == '2.png') {
+                  return 0;
+              }
+              if (counter == 2) {
+                  alles_zudecken();
+                  counter = 0;
+              }              
+              if (picture_2.getAttribute('src') == "0.png") {
+                  picture_2.src = "2.png";
+                  counter += 1;
+                  console.log("Counter: " + counter);
+              } else {
+                  picture_2.src = "0.png"; 
+              }
+          }
+          
+          function change_picture_3() {
+              if (picture_3.getAttribute('src') == '3.png') {
+                  return 0;
+              }
+              if (counter == 2) {
+                  alles_zudecken();
+                  counter = 0;
+              }    
+              if (picture_3.getAttribute('src') == "0.png") {
+                  picture_3.src = "3.png";
+                  counter += 1;
+                  console.log("Counter: " + counter);
+              } else {
+                  picture_3.src = "0.png"; 
+              }
+          }
+          
+          function change_picture_4() {
+              if (picture_4.getAttribute('src') == '4.png') {
+                  return 0;
+              }
+              if (counter == 2) {
+                  alles_zudecken();
+                  counter = 0;
+              }    
+              if (picture_4.getAttribute('src') == "0.png") {
+                  picture_4.src = "4.png";
+                  counter += 1;
+                  console.log("Counter: " + counter);
+              } else {
+                  picture_4.src = "0.png"; 
+              }
+          }
+          
+          function change_picture_5() {
+              if (picture_5.getAttribute('src') == '5.png') {
+                  return 0;
+              }
+              if (counter == 2) {
+                  alles_zudecken();
+                  counter = 0;
+              }    
+              if (picture_5.getAttribute('src') == "0.png") {
+                  picture_5.src = "1.png";
+                  counter += 1;
+                  console.log("Counter: " + counter);
+              } else {
+                  picture_5.src = "0.png"; 
+              }
+          }
+
+          function change_picture_6() {
+              if (picture_6.getAttribute('src') == '2.png') {
+                  return 0;
+              }
+              if (counter == 2) {
+                  alles_zudecken();
+                  counter = 0;
+              }              
+              if (picture_6.getAttribute('src') == "0.png") {
+                  picture_6.src = "2.png";
+                  counter += 1;
+                  console.log("Counter: " + counter);
+              } else {
+                  picture_6.src = "0.png"; 
+              }
+          }
+          
+          function change_picture_7() {
+              if (picture_7.getAttribute('src') == '3.png') {
+                  return 0;
+              }
+              if (counter == 2) {
+                  alles_zudecken();
+                  counter = 0;
+              }    
+              if (picture_7.getAttribute('src') == "0.png") {
+                  picture_7.src = "3.png";
+                  counter += 1;
+                  console.log("Counter: " + counter);
+              } else {
+                  picture_7.src = "0.png"; 
+              }
+          }
+          
+          function change_picture_8() {
+              if (picture_8.getAttribute('src') == '4.png') {
+                  return 0;
+              }
+              if (counter == 2) {
+                  alles_zudecken();
+                  counter = 0;
+              }    
+              if (picture_8.getAttribute('src') == "0.png") {
+                  picture_8.src = "4.png";
+                  counter += 1;
+                  console.log("Counter: " + counter);
+              } else {
+                  picture_8.src = "0.png"; 
+              }
+          }
+          
+          function alles_zudecken() {
+              picture_1.src = "0.png";
+              picture_2.src = "0.png";
+              picture_3.src = "0.png";
+              picture_4.src = "0.png";
+              picture_5.src = "0.png";
+              picture_6.src = "0.png";
+              picture_7.src = "0.png";
+              picture_8.src = "0.png";
+          }
+          
+      </script>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+
+  <title>Notenspiegel</title>
+  <meta name="description" content="Klassenarbeits- und Klausurspiegel">
+  <meta name="author" content="Paintdog">
+
+  <!-- <link rel="stylesheet" href="css/styles.css?v=1.0"> -->
+
+</head>
+<body>
+    
+    <p id="summary">Ein Noten- oder Klassenspiegel-Programm.</p>
+
+<form>
+<table>
+<tr>
+	<td>N </td>
+	<td>1 </td>
+	<td>2 </td>
+	<td>3 </td>
+	<td>4 </td>
+	<td>5 </td>
+	<td>6 </td>
+	<td>Ø </td>
+</tr>
+<tr>
+	<td><span id="number"></span></td>
+	<td><input id="1"></input></td>
+	<td><input id="2"></input></td>
+	<td><input id="3"></input></td>
+	<td><input id="4"></input></td>
+	<td><input id="5"></input></td>
+	<td><input id="6"></input></td>
+	<td><span id="result"></span></td>
+</tr>
+</table>
+</form>
+<button onclick=calculate()>calculate</button>
+
+<script>
+
+function calculate() {
+
+	var a, b, c, d, e, f, number, result;
+	
+	try {
+		a = parseInt(document.getElementById("1").value);
+	}
+	catch (e) {
+		a = 0;
+		console.log("1er konnten nicht erfasst werden.");
+	}
+	try {
+		b = parseInt(document.getElementById("2").value);
+	}
+	catch (e) {
+		b = 0;
+		console.log("2er konnten nicht erfasst werden.");
+	}
+	try {
+		c = parseInt(document.getElementById("3").value);
+	}
+	catch (e) {
+		c = 0;
+		console.log("3er konnten nicht erfasst werden.");
+	}
+	try {
+		d = parseInt(document.getElementById("4").value);
+	}
+	catch (e) {
+		d = 0;
+		console.log("4er konnten nicht erfasst werden.");
+	}
+	try {
+		e = parseInt(document.getElementById("5").value);
+	}
+	catch (e) {
+		e = 0;
+		console.log("5er konnten nicht erfasst werden.");
+	}
+	try {
+		f = parseInt(document.getElementById("6").value);
+	}
+	catch (e) {
+		f = 0;
+		console.log("6er konnten nicht erfasst werden.");
+	}
+	
+	if (isNaN(a)) { a = 0};
+	if (isNaN(b)) { b = 0};
+	if (isNaN(c)) { c = 0};
+	if (isNaN(d)) { d = 0};
+	if (isNaN(e)) { e = 0};
+	if (isNaN(f)) { f = 0};
+	
+	result = (a * 1 + b * 2 + c * 3 + d * 4 + e * 5 + f * 6) / (a + b + c + d + e + f);
+
+	
+	document.getElementById("result").innerHTML = result.toFixed(2);
+	document.getElementById("number").innerHTML = a + b + c + d + e + f;
+
+}
+
+</script>
+</body>
+</html>
