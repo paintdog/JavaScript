@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zahlen raten</title>
+  </head>
+  <body>
+      <p id="summary">Diese App bietet ein rudimentär implementiertes „Zahlen raten“-Spiel.</p>
+      
+      <p>Ich denke mir eine Zahl zwischen 1 und 20 ([1:20]) aus und Sie dürfen die Zahl raten!</p>
+      
+      <table>
+      <tr>
+          <td>Ihre Eingabe</td>
+          <td><input id="eingabe" type="number"></input></td>
+      </tr>
+      </table>
+
+      <button id="button">OK</button>
+      
+      <p id="result">Bitte machen Sie Ihre Eingabe.</p>
+
+      <p>Was man noch ergänzen könnte:</p>
+      <ul>
+      <li>Ein Neustart-Button startet das Spiel neu und der Computer denkt sich eine neue Zahl aus.</li>
+      <li>Ein Zähler zählt die Versuche, die der Benutzer benötigt, die Zahl zu raten.</li>
+      <li>Das Eingabefeld akzeptiert nur Zahlen zwischen 1 und 20.</li>
+      <li>Der Computer gibt ein Feedback, ob die gesuchte Zahl kleiner oder größer als die geratene Zahl ist.</li>
+      <li>usw.</li>
+      </ul>
+      
+      <script>
+        let number = Math.floor(Math.random() * 20) + 1;
+        console.log("Gesucht wird: " + number);
+          
+        button = document.getElementById("button");
+        
+        button.addEventListener("click", check);
+          
+        function check() {
+            let guessed_number = document.getElementById("eingabe").value;
+            
+            console.log("Geratene Zahl: " + guessed_number);
+            
+            if (number == guessed_number) {
+                document.getElementById("result").innerHTML = "Glückwunsch! Die gesuchte Zahl war" + number + "!";
+            } else {
+                document.getElementById("result").innerHTML = "Leider falsch. Raten Sie noch einmal!";
+            }
+        } 
+      </script>
+  </body>
+</html>
