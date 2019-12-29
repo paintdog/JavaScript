@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalender</title>
+      
+    <style>
+        html, body {
+          height: 100%;
+          margin: 0px;
+        }
+        
+        .content {
+          min-height: 100%;
+        }
+        
+        .content-inside {
+          padding: 10px;
+          padding-bottom: 50px;
+        }
+
+        table {
+            width: 100%;
+        }
+        
+        p {
+           
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        td {
+            height: 4.5em;
+            padding: 0.4em;
+            vertical-align: top;
+        }
+
+        #calendar_title {
+            width: 80%;
+            font-size: 36px;
+        }
+        
+        #calendar_backward {
+            text-align: left;
+            padding: 0.4em;
+        }
+        
+        #calendar_forward {
+            text-align: right;
+            padding: 0.4em;
+        }
+        
+        .week_number {
+            width: 4%;
+            background: Violet;
+            text-align: center;
+        }
+
+        .weekday {
+            width: 12%;  
+        }
+
+        .weekend {
+            width: 12%;  
+            background: Orange;
+        }
+        
+        #footer {
+            height: 50px;
+            margin-top: -50px;
+            width: 100%;
+            background: Yellow;
+        }
+    </style>
+      
+      
+  </head>
+  <body>
+      <div class="content">
+      <div class="content-inside">
+              
+      <p id="summary">Grundgerüst für eine einfache Kalender-App.</p>
+      
+      <div style="width: 80%; margin: auto;">
+          
+	  <table>
+          <tr>
+              <th id="calendar_backward">◁</th>
+              <th colspan="6" id="calendar_title">Dezember 2020</th>
+              <th id="calendar_forward">▷</th>
+          </tr>
+       </table>
+      
+      <p></p>
+       
+       <table>
+          <tr id="row_0">
+              <th class="week_number"></th>
+              <th class="weekday">Mo.</th>
+              <th class="weekday">Di.</th>
+              <th class="weekday">Mi.</th>
+              <th class="weekday">Do.</th>
+              <th class="weekday">Fr.</th>
+              <th class="weekend">Sa.</th>
+              <th class="weekend">So.</th>
+          </tr>
+          
+          <tr id="row_1">
+              <td class="week_number" id="wn_1">49</td>
+              <td></td>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td class="weekend">5</td>
+              <td class="weekend">6</td>
+          </tr>
+ 
+          <tr id="row_2">
+              <td class="week_number" id="wn_2">50</td>
+              <td>7</td>
+              <td>8</td>
+              <td>9</td>
+              <td>10</td>
+              <td>11</td>
+              <td class="weekend">12</td>
+              <td class="weekend">13</td>
+          </tr>
+           
+          <tr id="row_3">
+              <td class="week_number" id="wn_3">51</td>
+              <td>14</td>
+              <td>15</td>
+              <td>16</td>
+              <td>17</td>
+              <td>18</td>
+              <td class="weekend">19</td>
+              <td class="weekend">20</td>
+          </tr>
+           
+          <tr id="row_4">
+              <td class="week_number" id="wn_4">52</td>
+              <td>21</td>
+              <td>22</td>
+              <td>23</td>
+              <td>24</td>
+              <td>25</td>
+              <td class="weekend">26</td>
+              <td class="weekend">27</td>
+          </tr>
+           
+          <tr id="row_5">
+              <td class="week_number" id="wn_5">53</td>
+              <td>28</td>
+              <td>29</td>
+              <td>30</td>
+              <td>31</td>
+              <td></td>
+              <td class="weekend"></td>
+              <td class="weekend"></td>
+          </tr>
+           
+          <tr  id="row_6">
+              <td class="week_number" id="wn_6">54</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="weekend"></td>
+              <td class="weekend"></td>
+          </tr>
+          
+	  </table>
+	  
+      </div>
+	  </div>
+      </div>
+      <div id="footer">&nbsp;⚠ Die App ist ausdrücklich nicht für den produktiven Einsatz geignet.</div>
+      
+      <script>
+        // localStorage.setItem("month", null);
+        // localStorage.setItem("year", null);
+        
+          
+        let today = new Date();
+        console.log("Heute: "+today);
+        
+        function getWeekNumber(d) {
+            // Source: https://stackoverflow.com/questions/6117814/get-week-of-year-in-javascript-like-in-php
+            // Copy date so don't modify original
+            d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+            // Set to nearest Thursday: current date + 4 - current day number
+            // Make Sunday's day number 7
+            d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay()||7));
+            // Get first day of year
+            var yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+            // Calculate full weeks to nearest Thursday
+            var weekNo = Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7);
+            // Return array of year and week number
+            return weekNo;
+        }
+          
+        let monatsnamen = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+        
+        // Wir stellen sicher, dass Monat und Jahr sich nach einem Reload der Seite nicht ändert          
+        let month = localStorage.getItem("month");
+        let year  = localStorage.getItem("year");
+        console.log("Gespeichert ist month=" + month, "Year=" + year);
+          
+        // let month = parseInt(calendar_title.innerHTML, 10);
+        if (month == null || isNaN(month) ) {
+            
+            month = today.getMonth() + 1;
+            localStorage.setItem("month", month);
+
+        } else {
+            month = parseInt(month, 10);
+        }
+          
+        if (year  == null || isNaN(year) ) {
+            year  = today.getYear() + 1900;
+            localStorage.setItem("year", year);
+        } else {
+            year = parseInt(year, 10);
+        }
+          
+        console.log("Gespeichert ist month=" + month, "Year=" + year);
+          
+        let date  = new Date(year, month-1, 1);
+        
+        calendar_title.innerHTML = monatsnamen[month-1] + " " + year;
+          
+        // Wir füllen das Kalenderblatt aus...
+        fill_calendar(date);
+        
+        // Wir reagieren auf Eingaben des Besuchers
+        
+        backward_button = document.getElementById("calendar_backward");
+        forward_button  = document.getElementById("calendar_forward");
+        calendar_title  = document.getElementById("calendar_title");
+
+        backward_button.addEventListener("click", backward);
+        forward_button.addEventListener("click", forward);
+        
+        // Steuerung mit der Tastatur
+        document.onkeydown = function(evt) {
+            evt = evt || window.event;
+            switch (evt.keyCode) {
+              case 37:
+                backward();
+            break;
+              case 39:
+                forward();
+            break;
+            }
+        };
+        
+        function backward() {
+            console.log("Button „◁ Rückwärts“ wurde geklickt.");
+            month -= 1;
+            if (month == 0) {
+                month = 12;
+                year -=  1;
+            }
+            date = new Date(year, month-1, 1);
+            calendar_title.innerHTML = monatsnamen[month-1] + " " + year;
+            console.log("Akt. Monat: ", month, "Akt. Jahr: ", year);
+            console.log("Datum:       ", date);
+
+            // Kalenderblatt zeichnen
+            fill_calendar(date);
+            
+            // Update localStorage
+            localStorage.setItem("month", month);
+            localStorage.setItem("year", year); 
+        }
+       
+        function forward() {
+            console.log("Button „Vorwärts ▷“ wurde geklickt.");
+            month += 1;
+            if (month == 13) {
+                month = 1;
+                year += 1;
+            }
+            date = new Date(year, month-1, 1);
+            calendar_title.innerHTML = monatsnamen[month-1] + " " + year;
+            console.log("Akt. Monat: ", month, "|| Akt. Jahr: ", year);
+            console.log("Datum:       ", date);
+            
+            // Kalenderblatt zeichnen
+            fill_calendar(date);
+            
+            // Update localStorage
+            localStorage.setItem("month", month);
+            localStorage.setItem("year", year); 
+        }
+          
+        function fill_calendar(date) {
+            console.log("Ich befülle das Kalenderblatt für folgendes Datum: ", date);
+            
+            let weekday = date.getDay();
+            let month_days = number_of_days_in_the_month (date);
+            
+            let platzbedarf = get_platzbedarf(weekday, month_days);
+            console.log("Platzbedarf in Zeilen: " + platzbedarf);
+            
+            console.log("Wochentag ist ", weekday);
+            
+            cells = document.querySelectorAll("td");
+            console.log("Anzahl der Zellen: ", cells.length);
+            
+            let monats_array = get_monats_array(platzbedarf, weekday, month_days);
+            let monats_array_position = 0;
+            
+            for (let i = 0; i < cells.length; i++) {
+                if (i % 8 == 0) {
+                    console.log("Wochennummer-Spalte!");
+                } else {
+                    cells[i].innerHTML = monats_array[monats_array_position];
+                    monats_array_position += 1;
+                }
+                    
+            }
+            
+            // Wochennummern regeln
+            week_number = getWeekNumber(date);
+            
+            // Bei den ersten 4 Tabellenzeilen für den Inhalt ist keine Anpassung,
+            // weil selbst im günstigsten Fall (Februar mit 28 Tagen) 4 Tabellenzeilen
+            // für die Anzeige des Monats im Kalenderblatt erforderlich sind
+            document.getElementById("wn_1").innerHTML = format_week_number(week_number + 0); // row 1
+            document.getElementById("wn_2").innerHTML = format_week_number(week_number + 1); // row 2
+            document.getElementById("wn_3").innerHTML = format_week_number(week_number + 2); // row 3
+            document.getElementById("wn_4").innerHTML = format_week_number(week_number + 3); // row 4
+            
+            if (platzbedarf < 5) {
+                // Ich brauche die Zeile nicht mehr
+                document.getElementById("row_5").setAttribute("style", "visibility: collapse;"); // visible or collapse
+            } else {
+                // Ich brauche die Zeile tatsächlich
+                document.getElementById("row_5").setAttribute("style", "visibility: visible;"); // visible or collapse
+                document.getElementById("wn_5").innerHTML = format_week_number(week_number + 4);                
+            }
+            
+            if (platzbedarf < 6) {
+                // Ich brauche die Zeile nicht mehr
+                document.getElementById("row_6").setAttribute("style", "visibility: collapse;"); // visible or collapse
+            } else {
+                // Ich brauche die Zeile tatsächlich
+                document.getElementById("row_6").setAttribute("style", "visibility: visible;"); // visible or collapse
+                document.getElementById("wn_6").innerHTML = format_week_number(week_number + 5);                
+            }
+            
+            
+        }
+        
+        function number_of_days_in_the_month (date) {
+            let date2 = new Date(date.getYear() + 1900, date.getMonth() + 1, 1);
+            console.log(date);
+            console.log(date2);
+            return Math.trunc( ( date2.getTime() - date.getTime() ) / (1000 * 3600 * 24) );
+        }
+          
+        function format_week_number(week_number) {
+            // regelt, welche Wochennummer ausgegeben werden soll
+            // und korrigiert dabei Wochennummer > 52
+            if (week_number >= 53) {
+                return week_number  - 52;
+            } else {
+                return week_number;
+            }
+        }
+          
+        function get_platzbedarf(weekday, month_days) {
+            if (weekday == 0) {
+                weekday += 7;
+            } else {
+                weekday -= 1;
+            }
+            let zeilenbedarf = Math.ceil( (weekday + month_days) / 7 );
+            
+            console.log(weekday + month_days);
+            
+            console.log("Zeilenbedarf:", zeilenbedarf);
+            
+            return zeilenbedarf;
+        }
+          
+        function get_monats_array(platzbedarf, weekday, month_days) {
+            // Die Idee hier ist, dass ich ein Array erzeuge, das genau 
+            // der Zahl der Spalten * der Zahl der Zeilen entspricht und hier
+            // die Monatstage korrekt eintrage, um die Ausgabe in der 
+            // Hauptfunktion zu vereinfachen
+            let monats_array = [];
+            let monatstag = 1; // 1, 2, 3, 4 usw.
+            let startpunkt;
+            if (weekday == 0) {
+                startpunkt = 6;
+            } else {
+                startpunkt = weekday -1;
+            }
+            for (let i = 0; i < (platzbedarf * 7); i++) {
+                monats_array[i] = "&nbsp;";
+            }
+            for (let i = startpunkt; i < startpunkt + month_days; i++) {
+                monats_array[i] = monatstag;
+                monatstag += 1;
+            }
+            console.log(monats_array);
+            return monats_array;
+            
+        }
+      </script>
+  </body>
+</html>
