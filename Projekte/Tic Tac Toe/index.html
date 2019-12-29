@@ -292,7 +292,17 @@
               } else if (spielfeld[2] == spielfeld[4] && spielfeld[4] == spielfeld[6] && spielfeld[2] != "") {
                   statuszeile.innerHTML = "Spieler " + player + " hat gewonnen!";
                   sperre = true;
-              } 
+              }
+              
+              // Prüft, ob noch ein Feld frei ist
+              if (!(spielfeld.includes("")) && sperre == false) { 
+                  // der 2. Teil der Prüfung verhindert, dass ein gewonnenes Spiel nachträglich 
+                  // unentschieden gegeben wird. Bei einem Gewinn wird das Spielfeld gesperrt!
+                  statuszeile.innerHTML = "Das Spiel endete unentschieden!";
+                  sperre = true
+                  
+              }
+              
           }
           
           
