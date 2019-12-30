@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>window.print()</title>
+  </head>
+  <body>
+      <p id="summary">Mit dem Befehl <tt>window.print()</tt> kann ich im Browser ein Fenster oder ein Frame drucken, so als hätte der Benutzer den Befehl Drucken (Strg + P) verwendet.</p>
+      
+      <button id="print">Drucken</button>
+      
+      <script>
+        document.getElementById("print").onclick = function() {
+            window.print();
+        }
+      </script>
+  </body>
+</html>
