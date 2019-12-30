@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe</title>
+      <style>
+      
+          table, td {
+              border: 1px solid black;
+          }
+      
+      </style>
+  </head>
+  <body>
+      <p id="summary">Ein einfaches <a href="https://de.wikipedia.org/wiki/Tic-Tac-Toe">Drei gewinnt</a>.</p>
+        
+      <div width="80%">
+      
+          <table>
+          <tr>
+              <td><img src="n.png" id="0" /></td>
+              <td><img src="n.png" id="1" /></td>
+              <td><img src="n.png" id="2" /></td>
+          </tr>
+          <tr>
+              <td><img src="n.png" id="3" /></td>
+              <td><img src="n.png" id="4" /></td>
+              <td><img src="n.png" id="5" /></td>
+          </tr>
+          <tr>
+              <td><img src="n.png" id="6" /></td>
+              <td><img src="n.png" id="7" /></td>
+              <td><img src="n.png" id="8" /></td>
+          </tr>
+          </table>
+      
+      </div>
+      
+      <p id="status">Starten Sie ein neues Spiel durch Klicken auf ein Feld. Für einen Neustart klicken Sie auf den Button Restart.</p>
+      
+      <p><span id="restart" style="border: 2px solid Lime; background: Green; color: White; padding: 5px;">Restart</span></p>
+      
+      <script>
+          
+          let player = "x";
+          
+          let sperre = false; // Damit kann das Spielfeld bei dem Sieg eines Spielers gesperrt werden
+          
+          let spielfeld = ["", "", "", "", "", "", "", "", ""];
+          
+          statuszeile = document.getElementById("status");
+          img_0 = document.getElementById("0");
+          img_1 = document.getElementById("1");
+          img_2 = document.getElementById("2");
+          img_3 = document.getElementById("3");
+          img_4 = document.getElementById("4");
+          img_5 = document.getElementById("5");
+          img_6 = document.getElementById("6");
+          img_7 = document.getElementById("7");
+          img_8 = document.getElementById("8");
+          restart = document.getElementById("restart");
+          
+          img_0.addEventListener("click", img_0_clicked);
+          img_1.addEventListener("click", img_1_clicked);
+          img_2.addEventListener("click", img_2_clicked);
+          img_3.addEventListener("click", img_3_clicked);
+          img_4.addEventListener("click", img_4_clicked);
+          img_5.addEventListener("click", img_5_clicked);
+          img_6.addEventListener("click", img_6_clicked);
+          img_7.addEventListener("click", img_7_clicked);
+          img_8.addEventListener("click", img_8_clicked);
+          restart.addEventListener("click", reset);
+          
+          
+          function img_0_clicked() {
+            
+              if (sperre == true) { return 0; }
+              
+              if (spielfeld[0] == "") {
+                  spielfeld[0] = player;              
+                  img_0.src = player + ".png";
+                  
+                  check ();
+                  if (sperre == true) { return 0; }
+
+                  if (player == "x") { 
+                      player = "o";
+                  } else { 
+                      player = "x";
+                  }
+                  
+                  statuszeile.innerHTML = "Spieler " + player + " ist dran!";
+              }
+          }
+          
+          function img_1_clicked() {
+            
+              if (sperre == true) { return 0; }
+              
+              if (spielfeld[1] == "") {
+                  spielfeld[1] = player; 
+                  img_1.src = player + ".png";
+                  
+                  check ();
+                  if (sperre == true) { return 0; }
+
+                  if (player == "x") { 
+                      player = "o";
+                  } else { 
+                      player = "x";
+                  }
+                  
+                  statuszeile.innerHTML = "Spieler " + player + " ist dran!"; 
+              } 
+          }
+          
+          function img_2_clicked() {
+            
+              if (sperre == true) { return 0; }
+              
+              if (spielfeld[2] == "") {
+                  spielfeld[2] = player; 
+                  img_2.src = player + ".png";
+                  
+                  check ();
+                  if (sperre == true) { return 0; }
+
+                  if (player == "x") { 
+                      player = "o";
+                  } else { 
+                      player = "x";
+                  }
+                  
+                  statuszeile.innerHTML = "Spieler " + player + " ist dran!";
+              }
+          }
+          
+          function img_3_clicked() {
+            
+              if (sperre == true) { return 0; }
+              
+              if (spielfeld[3] == "") {
+                  spielfeld[3] = player; 
+                  img_3.src = player + ".png";
+                  
+                  check ();
+                  if (sperre == true) { return 0; }
+
+                  if (player == "x") { 
+                      player = "o";
+                  } else { 
+                      player = "x";
+                  }
+                  
+                  statuszeile.innerHTML = "Spieler " + player + " ist dran!";
+              }
+          }
+          
+          function img_4_clicked() {
+            
+              if (sperre == true) { return 0; }
+              
+              if (spielfeld[4] == "") {
+                  spielfeld[4] = player; 
+                  img_4.src = player + ".png";
+                  
+                  check ();
+                  if (sperre == true) { return 0; }
+
+                  if (player == "x") { 
+                      player = "o";
+                  } else { 
+                      player = "x";
+                  }
+                  
+                  statuszeile.innerHTML = "Spieler " + player + " ist dran!";
+              }
+          }
+          
+          function img_5_clicked() {
+            
+              if (sperre == true) { return 0; }
+              
+              if (spielfeld[5] == "") {
+                  spielfeld[5] = player; 
+                  img_5.src = player + ".png";
+                  
+                  check ();
+                  if (sperre == true) { return 0; }
+
+                  if (player == "x") { 
+                      player = "o";
+                  } else { 
+                      player = "x";
+                  }
+                  
+                  statuszeile.innerHTML = "Spieler " + player + " ist dran!";
+              }
+          }
+          
+          function img_6_clicked() {
+            
+              if (sperre == true) { return 0; }
+              
+              if (spielfeld[6] == "") {
+                  spielfeld[6] = player; 
+                  img_6.src = player + ".png";
+                  
+                  check ();
+                  if (sperre == true) { return 0; }
+
+                  if (player == "x") { 
+                      player = "o";
+                  } else { 
+                      player = "x";
+                  }
+                  
+                  statuszeile.innerHTML = "Spieler " + player + " ist dran!";
+              }
+          }
+          
+          function img_7_clicked() {
+            
+              if (sperre == true) { return 0; }
+              
+              if (spielfeld[7] == "") {
+                  spielfeld[7] = player; 
+                  img_7.src = player + ".png";
+                  
+                  check ();
+                  if (sperre == true) { return 0; }
+
+                  if (player == "x") { 
+                      player = "o";
+                  } else { 
+                      player = "x";
+                  }
+                  
+                  statuszeile.innerHTML = "Spieler " + player + " ist dran!";
+              }
+          }
+          
+          function img_8_clicked() {
+            
+              if (sperre == true) { return 0; }
+              
+              if (spielfeld[8] == "") {
+                  spielfeld[8] = player; 
+                  img_8.src = player + ".png";
+                  
+                  check ();
+                  if (sperre == true) { return 0; }
+                  
+                  if (player == "x") { 
+                      player = "o";
+                  } else { 
+                      player = "x";
+                  }
+                  
+                  statuszeile.innerHTML = "Spieler " + player + " ist dran!";
+              }
+          }
+          
+          
+          function check () {
+              
+              console.log(spielfeld);
+              
+              // Prüft, ob ein Spieler gewonnen hat
+              if (spielfeld[0] == spielfeld[1] && spielfeld[1] == spielfeld[2] && spielfeld[1] != "") {
+                  statuszeile.innerHTML = "Spieler " + player + " hat gewonnen!";
+                  sperre = true;
+              } else if (spielfeld[3] == spielfeld[4] && spielfeld[4] == spielfeld[5] && spielfeld[3] != "") {
+                  statuszeile.innerHTML = "Spieler " + player + " hat gewonnen!";
+                  sperre = true;
+              } else if (spielfeld[6] == spielfeld[7] && spielfeld[7] == spielfeld[8] && spielfeld[6] != "") {
+                  statuszeile.innerHTML = "Spieler " + player + " hat gewonnen!";
+                  sperre = true;
+              } else if (spielfeld[0] == spielfeld[3] && spielfeld[3] == spielfeld[6] && spielfeld[0] != "") {
+                  statuszeile.innerHTML = "Spieler " + player + " hat gewonnen!";
+                  sperre = true;
+              } else if (spielfeld[1] == spielfeld[4] && spielfeld[4] == spielfeld[7] && spielfeld[1] != "") {
+                  statuszeile.innerHTML = "Spieler " + player + " hat gewonnen!";
+                  sperre = true;
+              } else if (spielfeld[2] == spielfeld[5] && spielfeld[5] == spielfeld[8] && spielfeld[2] != "") {
+                  statuszeile.innerHTML = "Spieler " + player + " hat gewonnen!";
+                  sperre = true;
+              } else if (spielfeld[0] == spielfeld[4] && spielfeld[4] == spielfeld[8] && spielfeld[0] != "") {
+                  statuszeile.innerHTML = "Spieler " + player + " hat gewonnen!";
+                  sperre = true;
+              } else if (spielfeld[2] == spielfeld[4] && spielfeld[4] == spielfeld[6] && spielfeld[2] != "") {
+                  statuszeile.innerHTML = "Spieler " + player + " hat gewonnen!";
+                  sperre = true;
+              }
+              
+              // Prüft, ob noch ein Feld frei ist
+              if (!(spielfeld.includes("")) && sperre == false) { 
+                  // der 2. Teil der Prüfung verhindert, dass ein gewonnenes Spiel nachträglich 
+                  // unentschieden gegeben wird. Bei einem Gewinn wird das Spielfeld gesperrt!
+                  statuszeile.innerHTML = "Das Spiel endete unentschieden!";
+                  sperre = true
+                  
+              }
+              
+          }
+          
+          
+          function reset() {
+              console.log("Restart ausgelöst...");
+              
+              spielfeld = ["", "", "", "", "", "", "", "", ""];
+              
+              img_0.src = "n.png";
+              img_1.src = "n.png";
+              img_2.src = "n.png";
+              img_3.src = "n.png";
+              img_4.src = "n.png";
+              img_5.src = "n.png";
+              img_6.src = "n.png";
+              img_7.src = "n.png";
+              img_8.src = "n.png";
+              
+              statuszeile.innerHTML = "Starten Sie ein neues Spiel durch Klicken auf ein Feld. Für einen Neustart klicken Sie auf den Button Restart.";
+              
+              sperre = false;
+
+          }
+          
+          
+          
+      </script>
+  </body>
+</html>
