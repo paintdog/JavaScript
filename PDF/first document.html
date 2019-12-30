@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>First Document</title>
+  </head>
+  <body>
+      <p id="summary">Ich nutze <a href="https://rawgit.com/MrRio/jsPDF/master/docs/index.html">jsPDF</a>, um ein PDF-Dokument zu erzeugen.</p>
+      
+      
+      
+      <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+      
+      
+      
+      <script>
+        var doc = new jsPDF()
+
+        doc.text('Hello world!', 20, 20)
+          
+        doc.line(20, 25, 190, 25);
+          
+        doc.save('a4.pdf')
+        
+      </script>
+  </body>
+</html>
