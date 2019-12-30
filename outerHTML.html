@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>innerHTML und outerHTML</title>
+  </head>
+  <body>
+      <p id="summary">Mit den Befehlen kann ich Teile der Baumstruktur (innerHTML) bzw. auch mitsamt des Elements (outerHTML) betrachten.</p>
+      
+      <entry id="entry">Das ist ein Test.</entry>
+      
+      <script>
+console.log(document.querySelector("entry").innerHTML);
+
+console.log(document.querySelector("entry").outerHTML);
+
+      </script>
+  </body>
+</html>

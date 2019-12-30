@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>prompt()</title>
+  </head>
+  <body>
+      <p id="summary">Verwendung der JavaScript-Methode prompt().</p>
+      
+      <p id="benutzereingabe"></p>
+      
+      <script>
+        input = prompt("Wie alt sind Sie?");
+        console.log(input);
+          
+        document.getElementById("benutzereingabe").innerHTML = "Ihre Eingabe war: " + input;
+      </script>
+  </body>
+</html>
