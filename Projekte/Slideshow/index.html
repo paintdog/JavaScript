@@ -3,13 +3,71 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Titel</title>
+    <title>Slideshow</title>
+      
+    <style>
+      #slides {
+           position: relative;
+        }
+
+        .slide {
+           position: absolute;
+           left: 0; top: 0;
+           width: 100%; height: 100%;
+           opacity: 0;
+           z-index: 1;
+           transition: opacity 1s;
+        }
+
+        .showing {
+           opacity: 1;
+           z-index: 2;
+        }
+        
+        figcaption {
+            position: absolute;
+            top: 10px;
+            width: 150px;
+            text-align: center;
+            padding: 1ex;
+            border-top: 4px solid white;
+            border-bottom: 4px solid white;
+            display: block;
+            background: hsla(0, 0%, 90%, 0.4);
+        }
+    </style>
   </head>
   <body>
-      <p id="summary"></p>
+      <p id="summary">Ein Beispiel für eine einfache Slideshow. Das Beispiel habe ich <a href="https://www.mediaevent.de/javascript/">hier</a> aus dem Tutorial von mediaevent.de übernommen.</p>
+      
+ <div id="slides">
+   <figure class="slide showing">
+      <img src="slide-01.jpg">
+      <figcaption>Javascript Slideshow ohne jQuery</figcaption> 
+   </figure>
+   <figure class="slide">
+      <img src="slide-02.jpg">
+      <figcaption>HTML ohne zusätzliches Markup</figcaption> 
+   </figure>
+   <figure class="slide">
+      <img src="slide-03.jpg">
+      <figcaption>Nur ein paar Zeilen Javasctipt</figcaption> 
+   </figure>
+</div>
       
       <script>
-        alert("Hello world!");
+// querySelectorAll sammelt alle Elemente mit der Klasse .slide
+const slides = document.querySelectorAll('#slides .slide');
+let currentSlide = 0;
+
+// setInterval() steuert eine Javascript-Animation
+const slideInterval = setInterval(nextSlide, 3000);
+
+function nextSlide() {
+   slides[currentSlide].className = 'slide';
+   currentSlide = (currentSlide+1) % slides.length;
+   slides[currentSlide].className = 'slide showing';
+}
       </script>
   </body>
 </html>
