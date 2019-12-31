@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Variablen</title>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        vertical-align: top;
+        }
+    </style>
+  </head>
+  <body>
+      <p id="summary">Auf dieser Seite werden Variablen behandelt.</p>
+      
+      <p>Bis zur Zuweisung eines Werts hat die Variable den Wert <b>undefined</b>.</p>
+      
+      <table>
+      <tr>
+          <th>Schlüsselwort</th>
+          <th>Bedeutung</th>
+      </tr>
+      <tr>
+          <td>const</td>
+          <td>Es handelt sich um eine Konstante, wobei hier der Wert direkt bei der Deklaration zugewiesen werden muss. Nach der Deklaration kann kein neuer Wert zugewiesen werden. Wie bei let ist auch bei const eine Variable auf ihren Block-Scope beschränkt.</td>
+      </tr>
+      <tr>
+          <td>let</td>
+          <td>Gelten nur innerhalb ihres jeweiligen Blocks ({}). Mit let deklarierte Variablen haben einen kleinen Gültigkeitsbereich (scope), was Fehlerquellen reduziert. Wird auf eine mit let angelegte Variable außerhalb ihres Blocks zugegriffen, führt dies zu einem <b>ReferenceError</b>.</td>
+      </tr>
+      <tr>
+          <td>var</td>
+          <td>Wenn sie in einer Funktion deklariert wurden, gelten sie dort, wenn sie außerhalb von Funktionen angelegt wurden, sind es globale Variable.</td>
+      </tr>
+      <tr>
+          <td>Globale Variablen</td>
+          <td>Variablen, denen ohne ein let, const oder var ein Wert zugewiesen wird, sind implizit/einfach angelegt und damit globale Variablen.</td>
+      </tr>          
+      </table>
+      
+      <p>Mit dem Befehl <tt>"use strict";
+</tt> kann ich den Strict Modus aktivieren, der eine Fehlermeldung wirft, wenn Variablen implizit definiert werden.</p>
+      
+      <p>Variablennamen (camelCase):</p>
+      <ul>
+      <li>dürfen Buchstaben, Zahlen und Unterstriche enthalten</li>
+      <li>dürfen nicht mit einer Zahl, einem Sonder- oder Satzzeichen beginnen</li>
+      <li>dürfen keine Leerzeichen oder Bindestriche enthalten</li>
+      <li>Schlüsselwörter sind gesperrt</li>
+      </ul>
+      <p>JavaScript ist <em>case sensitive</em> , d. h. Name, name, NAme sind drei Variablen. Hier würde use strict helfen, entsprechende Falschschreibungen aufzufinden.</p>
+      
+      <p>Variablennamen, die einen Fehler enthalten, führen zu einem SyntaxError.</p>
+      
+      <p>JavaScript kennt Gleitkommazahlen, Ganzzahlen (Integer), Strings, Boolean und den Wert null. <b>JavaScript typisiert dynamisch, allerdings gilt die Zuweisung eines anderen Datentyps zu einer Variable als schlechte Programmierpraxis.</b></p>
+      
+      <script>
+        const π = 3.14159; 
+        let radius = 4;
+          
+        let summand1, summand2; // Definition mehrerer Variablen in einer Zeile ist zulässig, sollte der Lesbarkeit willen aber vermieden werden
+        summand1 = 2;
+        summand2 = 2;
+        
+        let name = "ECMA";
+        let hallo;
+          
+        if (name === "ECMA") {
+             hallo = "Hallo JavaScript";
+        } else {
+             hallo = "Hallo";
+        }
+          
+        console.log(hallo);
+        
+        console.log("Umfang des Kreises:", π * radius);
+          
+        console.log("Summe der beiden Zahlen ist:", summand1 + summand2);
+        
+          
+      </script>
+  </body>
+</html>
