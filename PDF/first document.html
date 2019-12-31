@@ -20,8 +20,27 @@
         doc.text('Hello world!', 20, 20)
           
         doc.line(20, 25, 190, 25);
+        
+        // Tabelle zeichnen        
+        doc.line(20,  40, 120, 40); // _ #1
           
-        doc.save('a4.pdf')
+        doc.line(20,  50, 120, 50); // _ #2
+          
+        doc.line(20,  60, 120, 60); // _ #3
+          
+        doc.line(20,  40,  20, 60); // | #1 
+          
+        doc.line(60,  40,  60, 60); // | #2
+          
+        doc.line(120, 40, 120, 60); // | #3
+        
+        doc.text("Datum", 22, 47);
+        doc.text("Werte", 62, 47); 
+
+        doc.text("2019-12-30",  22, 57);
+        doc.text("97,0"      , 102, 57);
+          
+        doc.save('a4.pdf');
         
       </script>
   </body>
