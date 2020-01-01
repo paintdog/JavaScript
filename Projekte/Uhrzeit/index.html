@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uhrzeit</title>
+    <style>
+        .uhrzeit {
+            font-size: 72pt;
+            text-align: center;
+        }
+    </style>
+  </head>
+  <body>
+      <p id="summary">Den Quelltext habe ich aus dem <a href="https://wiki.selfhtml.org/wiki/JavaScript/Objekte/Date/Uhr">selfhtml-Wiki</a> kopiert.</p>
+      
+      <p class="uhrzeit"><span id="uhr"></span> Uhr</p>
+      
+      <script>
+  
+  window.onload = uhrzeit();
+          
+          
+  function uhrzeit() {
+    var jetzt = new Date(),
+        h = jetzt.getHours(),
+        m = jetzt.getMinutes(),
+        s = jetzt.getSeconds();
+    h = fuehrendeNull(h);
+    m = fuehrendeNull(m);
+    s = fuehrendeNull(s);
+    document.getElementById('uhr').innerHTML = h + ':' + m + ':' + s;
+    setTimeout(uhrzeit, 500);
+  }
+  
+  function fuehrendeNull(zahl) {
+    zahl = (zahl < 10 ? '0' : '' )+ zahl;  
+    return zahl;
+  }         
+      </script>
+  </body>
+</html>
