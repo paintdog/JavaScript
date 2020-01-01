@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Titel</title>
+    <style>
+        
+        #main {
+            width: 80%;
+            margin: auto;
+            padding: 2em;
+            border: 1px solid Grey;
+            
+        }
+        
+        progress[value] {
+            -webkit-appearance: none;
+               appearance: none;
+
+            width:  100%;
+            height: 60px;
+            vertical-align: center;
+            
+            border: 8px solid Grey;
+            color: Lime;
+            background: Grey;
+        }  
+        
+        progress::-webkit-progress-bar { background: White; }
+        progress::-webkit-progress-value { background: Lime; }
+        
+    </style>
+  </head>
+  <body>
+      <p id="summary">Ein simpler Countdown, wobei die erste Version auf diesem <a href="https://stackoverflow.com/questions/20618355/the-simplest-possible-javascript-countdown-timer">Thread bei stackoverflow.com</a> basiert.</p>
+        
+    
+      <div id="main">
+      
+      <p>Verbleibende Zeit: <span id="time"></span></p>
+      
+      <progress id="progressbar" max="100" value="80"></progress>
+      
+      </div>
+      
+      <script>
+function startTimer(duration, display, progressbar) {
+    let timer = duration, minutes, seconds;
+    setInterval(function () {
+        
+        console.log("Timer:", timer);
+        
+        let progress = 100 - parseInt(timer / duration * 100);
+        
+        progressbar.value = progress;
+        
+        if (progress >= 90) {
+            progressbar.setAttribute("style", "background: Red;");
+        } else {
+            progressbar.setAttribute("style", "background: Grey;");
+        }
+        
+        console.log("Progress:", progress);
+        
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.innerHTML = minutes + ":" + seconds;
+        
+        
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 500);
+}
+
+window.onload = function () {
+    
+    let fiveMinutes = 60 * 1;
+    let display = document.querySelector('#time');
+    let progressbar = document.getElementById("progressbar");
+    
+    startTimer(fiveMinutes, display, progressbar);
+    
+};
+      </script>
+  </body>
+</html>
