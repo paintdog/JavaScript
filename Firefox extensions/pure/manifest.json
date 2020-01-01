@@ -1,0 +1,20 @@
+{
+
+  "manifest_version": 2,
+  "name": "pure",
+  "version": "1.0",
+
+  "description": "Removes adblock-warning on all webpages matching golem.de.",
+
+  "icons": {
+    "48": "icons/pure-48.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.golem.de/*"],
+      "js": ["pure.js"]
+    }
+  ]
+
+}
