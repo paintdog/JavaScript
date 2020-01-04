@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Warenkorb</title>
+    <style>
+        
+        table, th, td {
+            vertical-align: top;
+            border: 1px solid Grey;
+            border-collapse: collapse;
+        }
+        
+        th {
+            background: Gold;
+        }
+        
+        td {
+            padding: 0.5em;
+        }
+        
+        .value {
+            display: inline-block;
+            border: 1px solid Grey;
+            padding: 5px;
+            height: 1.4em;
+            width:  2em;
+            text-align: right;
+        }
+        
+        .plus {
+            display: inline-block;
+            border: 1px solid Green;
+            background: Lime;
+            height: 1.4em;
+            width: 1.4em;
+            padding: 5px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        
+        .minus {
+            display: inline-block;
+            border: 1px solid Red;
+            background: Pink;
+            height: 1.4em;
+            width: 1.4em;
+            padding: 5px;
+            text-align: center;
+            vertical-align: middle;
+        }
+                
+        .delete {
+            display: inline-block;
+            border: 1px solid Black;
+            background: LightGrey;
+            height: 1.4em;
+            width: 1.4em;
+            padding: 5px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        
+        .price {
+            width: 5em;
+            text-align: right;
+        }
+        
+    </style>
+  </head>
+  <body>
+      <p id="summary">Funktionalität, die man in einem Warenkorb benötigen könnte</p>
+      
+      <table>
+      <tr>
+          <th></th>
+          <th></th>
+          <th>Menge</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th>Einzelpreis</th>
+          <th>Gesamtpreis</th>
+      </tr>
+      <tr id="row_1">
+          <td>Produktbild</td>
+          <td>Produktname und Produktbeschreibung     </td>
+          <td><span class="value" id="value">2</span> </td>
+          <td><span id="plus" class="plus">▲</span>   </td>
+          <td><span class="minus" id="minus">▼</span> </td>
+          <td><span class="delete" id="delete">🗑</span> </td>
+          <td class="price" ><span id="unit_price">34,06&nbsp;€</span></td>
+          <td class="price" ><span id="total_price">34,06&nbsp;€</span></td>
+      </tr>
+      </table>
+      
+      <script>
+          // Ist hier eine missbräuchliche Nutzung denkbar, bei der die Werte manipuliert werden können?
+          // Wie kann ich eine missbräuchliche Nutzung verhindern?
+          
+          let table_row = document.getElementById("row_1");
+          let value = document.getElementById("value");
+          let number = parseInt(value.innerHTML, 10);
+          let plus = document.getElementById("plus");
+          let minus = document.getElementById("minus");
+          let deletion_request = document.getElementById("delete");
+          let unit_price = document.getElementById("unit_price");
+          let price = parseFloat(unit_price.innerHTML.replace("&nbsp;€","").replace(",","."), 10);
+          console.log("Preis:", price);
+          let total_price = document.getElementById("total_price");
+          
+          plus.addEventListener("click", add_value);
+          minus.addEventListener("click", reduce_value);
+          deletion_request.addEventListener("click", delete_row); 
+          
+          function add_value() {
+              number += 1
+              if (number > 30) {
+                  number = 30;
+              } else {
+                  value.innerHTML = number;
+                  total_price.innerHTML = (number * price).toFixed(2).toString().replace(".",",") + "&nbsp;€";
+              }
+          }
+          
+          function reduce_value() {
+              number -= 1
+              if (number == 0) {
+                  number = 1;
+              } else {
+                  value.innerHTML = number;
+                  total_price.innerHTML = (number * price).toFixed(2).toString().replace(".",",") + "&nbsp;€";
+              }
+          }
+          
+          function delete_row() {
+              table_row.outerHTML = "";
+          }
+            
+      </script>
+  </body>
+</html>
