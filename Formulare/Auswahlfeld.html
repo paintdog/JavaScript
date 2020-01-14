@@ -8,15 +8,17 @@
   <body>
       <p id="summary">Auswahlfeld</p>
       
+      <p>ABC: <span id="abc">0</span> DEF <span id="def">0</span></p>
+      
       <form>
       <select id="auswahl">
+          <option>N. N.</option>
           <option>ABC</option>
           <option>DEF</option>
       </select>
-      
       </form>
       
-      <p>ABC: <span id="abc">0</span> DEF <span id="def">0</span></p>
+      
       <script>
         let auswahl = document.getElementById("auswahl");
         let abc = document.getElementById("abc");
@@ -25,7 +27,20 @@
         auswahl.addEventListener("change", update);
           
         function update() {
-            console.log("Ausgelöst.");
+            let konkrete_auswahl = auswahl.value;
+            
+            if (konkrete_auswahl == "Null") {
+                abc.innerHTML = 0;
+                def.innerHTML = 0;
+            } else if (konkrete_auswahl == "ABC") {
+                abc.innerHTML = 1;
+                def.innerHTML = 0;
+            } else if (konkrete_auswahl == "DEF") {
+                abc.innerHTML = 0;
+                def.innerHTML = 1;
+            }
+            
+            console.log(konkrete_auswahl);
         }
         
         
