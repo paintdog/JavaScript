@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Titel</title>
+  </head>
+  <body>
+      <p id="summary">Auswahlfeld</p>
+      
+      <form>
+      <select id="auswahl">
+          <option>ABC</option>
+          <option>DEF</option>
+      </select>
+      
+      </form>
+      
+      <p>ABC: <span id="abc">0</span> DEF <span id="def">0</span></p>
+      <script>
+        let auswahl = document.getElementById("auswahl");
+        let abc = document.getElementById("abc");
+        let def = document.getElementById("def");
+        
+        auswahl.addEventListener("change", update);
+          
+        function update() {
+            console.log("Ausgelöst.");
+        }
+        
+        
+      </script>
+  </body>
+</html>
