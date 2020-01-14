@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Tabellen</title>
+      <style>
+          table, th, td {
+              border: 1px solid Grey;
+              border-collapse: collapse;
+              padding: 0.8em;
+          }
+          
+          .numbers {
+              text-align: right;
+          }
+      </style>
+  </head>
+  <body>
+      <p id="summary">Arbeit mit und an Tabellen</p>
+      
+      <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>2020</th>
+            <th>2019</th>
+            <th>2018</th>
+            <th>2017</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Lieschen Müller</td>
+            <td class='numbers'>48.28</td>
+            <td class='numbers'>32.18</td>
+            <td class='numbers'>12.34</td>
+            <td class='numbers'>-12.45</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Max Mustermann</td>
+            <td class='numbers'>-6.98</td>
+            <td class='numbers'>-34.76</td>
+            <td class='numbers'>-12.34</td>
+            <td class='numbers'>124.50</td>
+        </tr>
+      </table>
+      
+      <script>
+          
+          let tds = document.getElementsByTagName("td");
+          
+          for (let i = 0; i < tds.length; i++) {
+              
+              if (i % 6 > 1) {
+                  console.log(i, tds[i].innerHTML);
+                  let value = parseFloat(tds[i].innerHTML);
+                  if (value < 0) {
+                    tds[i].innerHTML = '<span style="color: Red;">' + tds[i].innerHTML + '</span>';
+                  }
+              }
+        }  
+      </script>
+  </body>
+</html>
