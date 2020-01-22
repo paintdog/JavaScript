@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ein EventListener für mehrere Objekte</title>
+  </head>
+  <body>
+      <p id="summary">Ein EventListener für mehrere Objekte (<a href="https://stackoverflow.com/questions/40956717/how-to-addeventlistener-to-multiple-elements-in-a-single-line">stackoverflow.com</a>).</p>
+      
+      <button>Test 1</button>
+      
+      <button>Test 2</button>
+      
+      <button>Test 3</button>
+      
+      <script>
+        document.addEventListener('click', function(e){
+          console.log(e);
+          if (e.target.innerText=="Test 1") {
+           console.log('1');
+          } else if (e.target.innerText=="Test 2") {
+           console.log('2');
+          } else if (e.target.innerText=="Test 3") {
+           console.log('3');
+          }
+            
+        })
+      
+      </script>
+  </body>
+</html>
