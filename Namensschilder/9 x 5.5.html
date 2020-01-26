@@ -32,74 +32,61 @@
         let abstand = 10;
         let w = 90;
         let h = 55;
-          
-        // Zahl der Seiten
-        let seitenzahl = Math.ceil(namen.length / 8);
-        console.log("Wir benötigen " + seitenzahl + " Seiten.");
         
         let lfd_nummer = 0;
-          
-        // Seiten regeln...
-        for (p = 0; p < seitenzahl; p++) {
             
-            console.log("Seite: " + p);
+        // Karten regeln...
+        for (i = 0; i < namen.length; i++) {
+
+            // Alle Rechtecke gesetzt, also kann der Druck beendet werden
+            if (lfd_nummer > namen.length - 1) { break; }
+
+            // Rechteck zeichnen
+            doc.setLineWidth(0.1);
+            doc.setDrawColor(220, 220, 220);
+            doc.rect(x, y, w, h);
+
+            // Text setzen
+            doc.setFontSize(18);
+            doc.setTextColor(0, 0, 0);
+            doc.text(namen[lfd_nummer], x + 45, y + 25, {align: "center", maxWidth: w,})
             
-            x = 10;
-            y = 10;
-            
-            // Karten regeln...
-            for (i = 0; i < 8; i++) {
-                
-                console.log("Laufende Nummer: ", i, lfd_nummer);
-                console.log(typeof lfd_nummer);
-                
-                // Alle Rechtecke gesetzt, also kann der Druck beendet werden
-                if (lfd_nummer > namen.length  -1) { break; }
-                
-                // Rechteck zeichnen
-                doc.setLineWidth(0.1);
-                doc.setDrawColor(220, 220, 220);
-                doc.rect(x, y, w, h);
+            // Text setzen
+            doc.setFontSize(12);
+            doc.setTextColor(178, 178, 178);
+            doc.text(job[lfd_nummer], x + 45, y + 35, {align: "center", maxWidth: w,})
 
-                // Text setzen
-                doc.setFontSize(18);
-                doc.setTextColor(0, 0, 0);
-                doc.text(namen[lfd_nummer], x + 45, y + 25, {align: "center", maxWidth: w,})
-                
-                doc.setFontSize(12);
-                doc.setTextColor(178, 178, 178);
-                doc.text(job[lfd_nummer], x + 45, y + 35, {align: "center", maxWidth: w,})
-                
-                // Farbbox zeichnen
-                doc.setLineWidth(0.1);
-                doc.setDrawColor(174, 207, 0);
-                doc.setFillColor(174, 207, 0);
-                doc.rect(x, y + 50, w, h - 50, 'F');
-                
-                // Bild einfügen
-                let image = new Image();
-                image.src = 'glider.png';
-                doc.addImage(image, 'PNG', x + w - 2 - 15, y + 2, 15, 15)
+            // Farbbox zeichnen
+            doc.setLineWidth(0.1);
+            doc.setDrawColor(174, 207, 0);
+            doc.setFillColor(174, 207, 0);
+            doc.rect(x, y + 50, w, h - 50, 'F');
 
-                // console.log(p, i, p + i, namen[p * 8 + i]);
+            // Bild einfügen
+            let image = new Image();
+            image.src = 'glider.png';
+            doc.addImage(image, 'PNG', x + w - 2 - 15, y + 2, 15, 15)
 
-                if (i % 2 == 0) {
-                    // Im Durchgang 0 usw. die Werte setzen,
-                    // um in der Zeile eins nach rechts zu gehen
-                    x = x + w + abstand;
-                    y = y;
-                } else {
-                    // Im Durchgang 1 usw. die Werte setzen,
-                    // um in der Spalte eins nach unten zu gehen
-                    x = 10;
-                    y = y + h + abstand;
-                }
-                
-                // Schleifendurchlauf beendet, neue Seite einfügen
-                if (i == 7) { doc.addPage(); }
-                
-                lfd_nummer += 1;
+            if (i % 2 == 0) {
+                // Im Durchgang 0 usw. die Werte setzen,
+                // um in der Zeile eins nach rechts zu gehen
+                x = x + w + abstand;
+                y = y;
+            } else {
+                // Im Durchgang 1 usw. die Werte setzen,
+                // um in der Spalte eins nach unten zu gehen
+                x = 10;
+                y = y + h + abstand;
             }
+
+            // Schleifendurchlauf beendet, neue Seite einfügen
+            if (lfd_nummer % 8 == 7) {
+                doc.addPage();
+                x = 10;
+                y = 10;
+            }
+
+            lfd_nummer += 1;
         }
                   
         doc.save('letter.pdf');
