@@ -37,6 +37,8 @@
         let seitenzahl = Math.ceil(namen.length / 8);
         console.log("Wir benötigen " + seitenzahl + " Seiten.");
         
+        let lfd_nummer = 0;
+          
         // Seiten regeln...
         for (p = 0; p < seitenzahl; p++) {
             
@@ -47,14 +49,12 @@
             
             // Karten regeln...
             for (i = 0; i < 8; i++) {
-                 
-                let lfd_nummer = Math.floor(p * 8 + i);
-                console.log(lfd_nummer);
+                
+                console.log("Laufende Nummer: ", i, lfd_nummer);
+                console.log(typeof lfd_nummer);
                 
                 // Alle Rechtecke gesetzt, also kann der Druck beendet werden
-                if (lfd_nummer > namen.length) { break; }
-                
-                console.log("Werte: ", x, y);
+                if (lfd_nummer > namen.length  -1) { break; }
                 
                 // Rechteck zeichnen
                 doc.setLineWidth(0.1);
@@ -97,6 +97,8 @@
                 
                 // Schleifendurchlauf beendet, neue Seite einfügen
                 if (i == 7) { doc.addPage(); }
+                
+                lfd_nummer += 1;
             }
         }
                   
