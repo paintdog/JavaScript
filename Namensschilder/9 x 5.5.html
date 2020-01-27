@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>9 x 5.5</title>
+  </head>
+  <body>
+      
+      <p id="summary">Ich nutze <a href="https://rawgit.com/MrRio/jsPDF/master/docs/index.html">jsPDF</a> (<a href="https://rawgit.com/MrRio/jsPDF/master/docs/jsPDF.html#rect">Docs</a>), um ein PDF-Dokument zu erzeugen.</p>
+      
+      <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+
+      
+      <script>
+        
+        let namen = ["Dr. Stephen Falken", "David Lightman", "Dr. John McKittrick", "Jennifer Katherine Mack",
+                     "General Jack Beringer", "Pat Healy", "Arthur Cabot", "Lyle Watson",
+                     "Colonel Joe Conley", "Paul Richter"];
+        let job   = ['Schauspieler', 'Schauspieler', 'Schauspieler', 'Schauspielerin',
+                     'Schauspieler', 'Schauspielerin', 'Schauspieler', 'Schauspieler',
+                     'Schauspieler', 'Schauspieler'];
+          
+        let doc = new jsPDF()
+        
+        // Fonts
+        console.log(doc.getFontList());
+          
+        // Variablen
+        let x = 10;
+        let y = 10;
+        let abstand = 10;
+        let w = 90;
+        let h = 55;
+        
+        let lfd_nummer = 0;
+            
+        // Karten regeln...
+        for (i = 0; i < namen.length; i++) {
+
+            // Alle Rechtecke gesetzt, also kann der Druck beendet werden
+            if (lfd_nummer > namen.length - 1) { break; }
+
+            // Rechteck zeichnen
+            doc.setLineWidth(0.1);
+            doc.setDrawColor(220, 220, 220);
+            doc.rect(x, y, w, h);
+
+            // Text setzen
+            doc.setFontSize(18);
+            doc.setTextColor(0, 0, 0);
+            doc.text(namen[lfd_nummer], x + 45, y + 25, {align: "center", maxWidth: w,})
+            
+            // Text setzen
+            doc.setFontSize(12);
+            doc.setTextColor(178, 178, 178);
+            doc.text(job[lfd_nummer], x + 45, y + 35, {align: "center", maxWidth: w,})
+
+            // Farbbox zeichnen
+            doc.setLineWidth(0.1);
+            doc.setDrawColor(174, 207, 0);
+            doc.setFillColor(174, 207, 0);
+            doc.rect(x, y + 50, w, h - 50, 'F');
+
+            // Bild einfügen
+            let image = new Image();
+            image.src = 'glider.png';
+            doc.addImage(image, 'PNG', x + w - 2 - 15, y + 2, 15, 15)
+            
+            // Nächste Box vorbereiten
+            if (i % 2 == 0) {
+                // Im Durchgang 0 usw. die Werte setzen,
+                // um in der Zeile eins nach rechts zu gehen
+                x = x + w + abstand;
+                y = y;
+            } else {
+                // Im Durchgang 1 usw. die Werte setzen,
+                // um in der Spalte eins nach unten zu gehen
+                x = 10;
+                y = y + h + abstand;
+            }
+
+            // Schleifendurchlauf beendet, neue Seite einfügen
+            if (lfd_nummer % 8 == 7) {
+                doc.addPage();
+                x = 10;
+                y = 10;
+            }
+
+            lfd_nummer += 1;
+        }
+                  
+        doc.save('letter.pdf');
+        
+      </script>
+      
+      
+  </body>
+</html>
