@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Titel</title>
+    <style>
+        textarea {
+            width: 40%;
+            height: 180px;
+            margin: 20px;
+        }  
+        
+        button {
+            color: blue;
+        }
+    </style>
+  </head>
+  <body>
+      <p id="summary">Einfache Arbeit mit Texten (Strings).</p>
+      
+      <textarea id="input">
+Dr. Stephen Falken, Wissenschaftler
+      </textarea>
+      
+      <textarea id="output">
+      
+      </textarea>
+      
+      <button id="start">Auswerten</button>
+      
+      <script>
+      let button = document.getElementById("start");
+      let input = document.getElementById("input");
+      let output = document.getElementById("output");
+      
+      button.addEventListener("click", verarbeiten);
+          
+      function verarbeiten() {
+          let text = input.innerHTML;
+          output.value = text;
+      }
+      
+      </script>
+  </body>
+</html>
